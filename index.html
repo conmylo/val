@@ -9,7 +9,8 @@
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
     <style>
         body {
-            background: linear-gradient(to bottom right, #ff8b8b, #ffccff);
+            background: url('/mnt/data/candle.jpg') no-repeat center center fixed;
+            background-size: cover;
             color: white;
             font-family: 'Poppins', sans-serif;
             height: 100vh;
@@ -53,6 +54,8 @@
             font-size: 1.2rem;
             position: relative;
             transition: all 0.3s ease-in-out;
+            padding: 10px 20px;
+            font-size: 1.5rem;
         }
 
         #noButton:hover {
@@ -79,12 +82,25 @@
             border-radius: 15px;
         }
 
+        .note {
+            font-size: 1.2rem;
+            color: #ffddff;
+            font-weight: bold;
+            margin-top: 20px;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .emojis {
+            font-size: 2rem;
+            margin-top: 20px;
+        }
+
         @keyframes backgroundAnimation {
             0% {
-                background: linear-gradient(to bottom right, #ff8b8b, #ffccff);
+                background: url('/mnt/data/mike-labrum-fvl4b1gjpbk-unsplash.jpg') no-repeat center center fixed;
             }
             100% {
-                background: linear-gradient(to bottom right, #ff7acc, #ff99cc);
+                background: url('/mnt/data/mike-labrum-fvl4b1gjpbk-unsplash.jpg') no-repeat center center fixed;
             }
         }
     </style>
@@ -97,7 +113,11 @@
     
     <button id="noButton" class="no" onmouseover="moveButton()">NO</button>
 
-    <img id="meme" class="meme" src="https://i.imgur.com/8K0Ol1C.png" alt="Happy Pikachu" />
+    <img id="meme" class="meme" src="https://i.pinimg.com/originals/3c/ee/c7/3ceec7c0aee676a06b93adf94de026ef.jpg" alt="Happy Pikachu" />
+
+    <div class="note">(no is not an option)</div>
+
+    <div class="emojis" id="emojiContainer"></div>
 
     <script>
         // Function to move the "no" button randomly when hovered
@@ -126,6 +146,14 @@
             // Show meme
             const meme = document.getElementById("meme");
             meme.style.display = "block";
+
+            // Hide the NO button
+            const noButton = document.getElementById("noButton");
+            noButton.style.display = "none";
+
+            // Show teary-eyed emojis
+            const emojiContainer = document.getElementById("emojiContainer");
+            emojiContainer.innerHTML = "😭💖😭";
         }
     </script>
 
