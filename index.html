@@ -9,8 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
     <style>
         body {
-            background: url('candle.jpg') no-repeat center center fixed;
-            background-size: cover;
+            background: linear-gradient(to bottom right, #3b0a45, #5c1b73); /* Dark romantic hues */
             color: white;
             font-family: 'Poppins', sans-serif;
             height: 100vh;
@@ -20,7 +19,6 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            animation: backgroundAnimation 10s infinite alternate;
             overflow: hidden;
         }
 
@@ -53,16 +51,17 @@
         #noButton {
             font-size: 1.2rem;
             position: relative;
+            padding: 25px 50px;
+            font-size: 2rem;
             transition: all 0.3s ease-in-out;
-            padding: 10px 20px;
-            font-size: 1.5rem;
+            margin-left: 20px;
         }
 
         #noButton:hover {
+            transform: scale(0.7); /* Shrinks the button on hover */
             position: absolute;
             top: 10px;
             left: 10px;
-            transform: scale(1.5);
         }
 
         .yes {
@@ -73,13 +72,6 @@
         .no {
             background-color: #f44336;
             color: white;
-        }
-
-        .meme {
-            display: none;
-            width: 50%;
-            margin-top: 20px;
-            border-radius: 15px;
         }
 
         .note {
@@ -94,26 +86,16 @@
             font-size: 2rem;
             margin-top: 20px;
         }
-
-        @keyframes backgroundAnimation {
-            0% {
-                background: url('candle.jpg') no-repeat center center fixed;
-            }
-            100% {
-                background: url('candle.jpg') no-repeat center center fixed;
-            }
-        }
     </style>
 </head>
 <body>
 
     <h1>Mikaela, will you be my valentine?</h1>
 
-    <button class="yes" onclick="celebrateYes()">YES</button>
-    
-    <button id="noButton" class="no" onmouseover="moveButton()">NO</button>
-
-    <img id="meme" class="meme" src="https://i.pinimg.com/originals/3c/ee/c7/3ceec7c0aee676a06b93adf94de026ef.jpg" alt="Happy Pikachu" />
+    <div style="display: flex; align-items: center;">
+        <button class="yes" onclick="celebrateYes()">YES</button>
+        <button id="noButton" class="no" onmouseover="moveButton()">NO</button>
+    </div>
 
     <div class="note">(no is not an option)</div>
 
@@ -134,7 +116,7 @@
             noButton.style.top = randomY + "px";
         }
 
-        // Function to trigger the celebration (confetti and meme)
+        // Function to trigger the celebration (confetti and hide NO button)
         function celebrateYes() {
             // Trigger confetti effect
             confetti({
@@ -143,17 +125,13 @@
                 origin: { x: 0.5, y: 0.5 }
             });
 
-            // Show meme
-            const meme = document.getElementById("meme");
-            meme.style.display = "block";
-
             // Hide the NO button
             const noButton = document.getElementById("noButton");
             noButton.style.display = "none";
 
             // Show teary-eyed emojis
             const emojiContainer = document.getElementById("emojiContainer");
-            emojiContainer.innerHTML = "🥹🥹🥹";
+            emojiContainer.innerHTML = "🥹🥹🥹";  // Emotional emoji display
         }
     </script>
 
