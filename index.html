@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Valentine's Page</title>
+    <!-- Confetti library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
     <style>
         body {
-            background: linear-gradient(to bottom right, #ff6a00, #ee0979);
+            background: linear-gradient(to bottom right, #ff8b8b, #ffccff);
             color: white;
             font-family: 'Poppins', sans-serif;
             height: 100vh;
@@ -17,33 +19,34 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            animation: backgroundAnimation 8s infinite alternate;
+            animation: backgroundAnimation 10s infinite alternate;
+            overflow: hidden;
         }
 
         h1 {
-            font-size: 3rem;
+            font-size: 4rem;
             margin-bottom: 20px;
             font-weight: bold;
             text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
-            letter-spacing: 2px;
+            letter-spacing: 3px;
         }
 
         button {
-            padding: 15px 25px;
-            font-size: 1.5rem;
+            padding: 25px 50px;
+            font-size: 2rem;
             font-weight: bold;
             background: #fff;
             border: none;
             border-radius: 50px;
             cursor: pointer;
             transition: transform 0.2s ease;
-            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
-            margin-top: 20px;
+            box-shadow: 0px 5px 25px rgba(0, 0, 0, 0.2);
+            margin-top: 30px;
         }
 
         button:hover {
-            transform: scale(1.1);
-            box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.2);
+            transform: scale(1.2);
+            box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.3);
         }
 
         #noButton {
@@ -56,16 +59,7 @@
             position: absolute;
             top: 10px;
             left: 10px;
-            transform: scale(1.3);
-        }
-
-        @keyframes backgroundAnimation {
-            0% {
-                background: linear-gradient(to bottom right, #ff6a00, #ee0979);
-            }
-            100% {
-                background: linear-gradient(to bottom right, #ff66b2, #ff00cc);
-            }
+            transform: scale(1.5);
         }
 
         .yes {
@@ -77,15 +71,33 @@
             background-color: #f44336;
             color: white;
         }
+
+        .meme {
+            display: none;
+            width: 50%;
+            margin-top: 20px;
+            border-radius: 15px;
+        }
+
+        @keyframes backgroundAnimation {
+            0% {
+                background: linear-gradient(to bottom right, #ff8b8b, #ffccff);
+            }
+            100% {
+                background: linear-gradient(to bottom right, #ff7acc, #ff99cc);
+            }
+        }
     </style>
 </head>
 <body>
 
     <h1>Mikaela, will you be my valentine?</h1>
 
-    <button class="yes" onclick="alert('Yay! You said YES!')">YES</button>
+    <button class="yes" onclick="celebrateYes()">YES</button>
     
     <button id="noButton" class="no" onmouseover="moveButton()">NO</button>
+
+    <img id="meme" class="meme" src="https://i.imgur.com/8K0Ol1C.png" alt="Happy Pikachu" />
 
     <script>
         // Function to move the "no" button randomly when hovered
@@ -100,6 +112,20 @@
             noButton.style.position = "absolute";
             noButton.style.left = randomX + "px";
             noButton.style.top = randomY + "px";
+        }
+
+        // Function to trigger the celebration (confetti and meme)
+        function celebrateYes() {
+            // Trigger confetti effect
+            confetti({
+                particleCount: 150,
+                spread: 100,
+                origin: { x: 0.5, y: 0.5 }
+            });
+
+            // Show meme
+            const meme = document.getElementById("meme");
+            meme.style.display = "block";
         }
     </script>
 
